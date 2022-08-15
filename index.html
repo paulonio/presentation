@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>DRY</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/blood.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>DRY</h1>
+					<p>Don't repeat yourself</p>
+				</section>
+				<section>
+					<section>
+						<h2>What is DRY?</h2>
+					</section>			
+					<section>DRY is a software development principle that was mentioned and defined by Andy Hunt and Dave Thomas in their book <span style="color: #a23;">The Pragmatic Programmer</span> in 1999.</section>
+					<section data-markdown>
+						<textarea data-template>
+							>Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
+						</textarea>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h4>Examples of non DRY and DRY code</h4>
+						<pre><code data-trim data-noescape>
+							const vegetables = [cucumber, carrot, potato, tomato, pumpkin];
+
+							// Non DRY code
+							console.log(vegetables[0]);
+							console.log(vegetables[1]);
+							console.log(vegetables[2]);
+							console.log(vegetables[3]);
+							console.log(vegetables[4]);
+
+							// DRY code
+							for (let i = 0; i < vegetables.length; i++) {
+								console.log(vegetables[i]);
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h4>Examples of non DRY and DRY code</h4>
+						<pre><code data-trim data-noescape>
+							const vegetables = [cucumber, carrot, potato, tomato, pumpkin];
+							const fruit = [apple, pomegranate, banana, peach];
+
+							// Non DRY code
+							console.log(vegetables[0]);
+							console.log(vegetables[1]);
+							console.log(vegetables[2]);
+							console.log(vegetables[3]);
+							console.log(vegetables[4]);
+
+							console.log(fruit[0]);
+							console.log(fruit[1]);
+							console.log(fruit[2]);
+							console.log(fruit[3]);
+
+							// DRY code
+							function printFood (array) {
+								for (let i = 0; i < array.length; i++) {
+									console.log(array[i]);
+								}
+							}
+
+							printFood(vegetables);	
+							printFood(fruit);	
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h4>Examples of non DRY and DRY code</h4>
+						<pre><code data-trim data-noescape>
+							// Non DRY code
+							const a = [BMW, Opel, Ford, Tesla, Fiat];
+
+							function some (smth) {
+								for (let i = 0; i < smth.length; i++) {
+									console.log(smth[i]);
+								}
+							}
+
+							some(a);
+
+							// DRY code
+							const cars = [BMW, Opel, Ford, Tesla, Fiat];
+
+							function printItems (array) {
+								for (let i = 0; i < array.length; i++) {
+									console.log(array[i]);
+								}
+							}
+
+							printItems(cars);
+						</code></pre>
+				</section>
+				<section>
+					<section>
+						<h2>Why is knowledge duplication a bad practice?</h2>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment" data-fragment-index="4" style="color: #a23; font-weight: bold;">Changes need to be made in each place where data is duplicated;</li>
+							<li class="fragment" data-fragment-index="1">Long code;</li>
+							<li class="fragment" data-fragment-index="2">Code takes up more disk space;</li>
+							<li class="fragment" data-fragment-index="3">It's difficult to find something in such code.</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>How does duplication arise?</h2>
+					</section>
+					<section>
+						<h4>Most of the duplications occur for the following reasons:</h4>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Imposed duplication;</li>
+							<li class="fragment" data-fragment-index="2">Inadvertent duplication;</li>
+							<li class="fragment" data-fragment-index="3">Impatient duplication;</li>
+							<li class="fragment" data-fragment-index="4">Interdeveloper duplication.</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>What are the advantages?</h2>
+					</section>
+					<section>
+						<h4>Advantages:</h4>
+						<ol>
+							<li>Maintainability;</li>
+							<li class="fragment" data-fragment-index="1">Readability;</li>
+							<li class="fragment" data-fragment-index="2">Reuse;</li>
+							<li class="fragment" data-fragment-index="3">Cost;</li>
+							<li class="fragment" data-fragment-index="4">Testing.</li>
+						</ol>
+					</section>
+				</section>
+				<section>
+					<h2>Thank you for your attention!</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
